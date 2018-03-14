@@ -1,0 +1,2 @@
+language: clojure
+fprocess: java -jar function.jar
