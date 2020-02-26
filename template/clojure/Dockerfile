@@ -9,11 +9,12 @@ WORKDIR /root/
 COPY function/ src/
 COPY main/ src/main/
 COPY function/project.clj project.clj
-RUN lein uberjar && mv target/function.jar .
+RUN lein compile && lein uberjar && mv target/function.jar .
 
 ENV fprocess="java -jar function.jar"
+
+EXPOSE 8080
 
 HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
 
 CMD ["fwatchdog"]
-
