@@ -9,7 +9,7 @@ WORKDIR /root/
 COPY function/ src/
 COPY main/ src/main/
 COPY function/project.clj project.clj
-RUN lein compile && lein uberjar && mv target/function.jar .
+RUN lein uberjar && mv target/function.jar .
 
 ENV fprocess="java -jar function.jar"
 
